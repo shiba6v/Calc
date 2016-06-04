@@ -20,6 +20,5 @@ public class NumberButton : CalcButton {
     public override void ButtonPressed()
     {
         StartCoroutine(EmitLight());
-        _calc.SetNumber(_number);
     }
 }
