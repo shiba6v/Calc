@@ -19,6 +19,7 @@ public class NumberButton : CalcButton {
 
     public void ButtonPressed()
     {
+        StartCoroutine(EmitLight());
         _calc.SetNumber(_number);
     }
 }

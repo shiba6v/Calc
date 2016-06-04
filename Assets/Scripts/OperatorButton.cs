@@ -18,6 +18,7 @@ public class OperatorButton : CalcButton {
 
     public void ButtonPressed()
     {
+        StartCoroutine(EmitLight());
         _calc.SetOperator(_ope);
     }
 }
