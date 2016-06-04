@@ -9,6 +9,7 @@ public class OperatorButton : CalcButton {
 
 	// Use this for initialization
 	void Start () {
+        _pushActivator = GetComponent<PushActivator>();
         _calc.SetOperatorButton(_ope,this);
 	}
 	

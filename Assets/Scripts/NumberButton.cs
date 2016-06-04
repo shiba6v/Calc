@@ -9,6 +9,7 @@ public class NumberButton : CalcButton {
 
 	// Use this for initialization
 	void Start () {
+        _pushActivator = GetComponent<PushActivator>();
         _calc.SetNumberButton(_number,this);
 	}
 	

@@ -10,6 +10,7 @@ public class Enum : CalcButton {
         Subtract = 2,
         Multiply = 3,
         Divide = 4,
+        Equal =5,
     }
         
 

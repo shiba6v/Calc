@@ -7,12 +7,10 @@ public abstract class CalcButton : MonoBehaviour {
     [SerializeField]
     internal Calc _calc;
 
-    [SerializeField]
-    internal Light _light;
+    internal PushActivator _pushActivator;
 
 	// Use this for initialization
-	void Start () {
-	
+    void Start () {
 	}
 	
 	// Update is called once per frame
@@ -27,14 +25,13 @@ public abstract class CalcButton : MonoBehaviour {
 
     internal IEnumerator EmitLight()
     {
+        _pushActivator.Init();
         for(int i=0;i<10;i++)
         {
-            _light.intensity = i * 0.3f;
             yield return new WaitForSeconds(0.01f);
         }
         for(int i=10;i>=0;i--)
         {
-            _light.intensity = i * 0.3f;
             yield return new WaitForSeconds(0.01f);
 
         }

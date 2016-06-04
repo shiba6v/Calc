@@ -64,7 +64,16 @@ public class Calc : MonoBehaviour {
             }
             _numberButtons[div1].ButtonPressed();
             yield return new WaitForSeconds(waitTime);
-            PressOperator();
+            if(i != _repetition -1)
+            {
+                PressOperator();
+            }
+            else
+            {
+                //最後の時はイコール
+                _operatorButtons[(int)Enum.Operator.Equal].ButtonPressed();
+            
+            }
             yield return new WaitForSeconds(waitTime);
         }
     }
