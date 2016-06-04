@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class DifficultySelect : MonoBehaviour {
 
     public static int difficulty;
+    public static readonly int maxDifficulty = 14;
 
     /** 一桁でやる難易度 */
     static readonly int[] oneDigitDifficulty = new int[10]{

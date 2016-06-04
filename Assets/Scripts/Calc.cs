@@ -28,8 +28,6 @@ public class Calc : MonoBehaviour {
     [SerializeField]
     Text _text;
 
-
-
 	// Use this for initialization
 	void Start () {
         DifficultySelect.difficulty = 1;
@@ -37,10 +35,12 @@ public class Calc : MonoBehaviour {
         _operatorList = DifficultySelect.OperatorList();
         _repetition = DifficultySelect.Repetition();
 	}
+
 	
 	// Update is called once per frame
 	void Update () {
         _text.text = string.Format("sum: {0}\n input: {1}\n ope: {2}",sum,input,_ope);
+
 	}
 
     public void StartGame()
@@ -51,6 +51,9 @@ public class Calc : MonoBehaviour {
 
     IEnumerator RepeatCoroutine()
     {
+        yield return new WaitForSeconds(1f);
+        //スタートの表示
+        yield return new WaitForSeconds(1f);
         for(int i = 0;i<_repetition;i++)
         {
             int num  = RestrictedRand();
