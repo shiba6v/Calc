@@ -5,6 +5,7 @@ public class Enum : MonoBehaviour {
 
     public enum Operator
     {
+        None =0,
         Add = 1,
         Subtract = 2,
 
