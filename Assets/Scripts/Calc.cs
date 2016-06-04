@@ -10,8 +10,12 @@ public class Calc : MonoBehaviour {
     int input =0;
     Enum.Operator _ope = Enum.Operator.None;
     NumberButton[] _numberButtons = new NumberButton[10];
+    /** 可能な演算 */
     OperatorButton[] _operatorButtons = new OperatorButton[System.Enum.GetNames(typeof(Enum.Operator)).Length];
+    /** 使える数字 */
     List<int> _baseNumberList;
+    /** 繰り返し回数 */
+    int _repetition = 5;
     List<Enum.Operator> _operatorList;
 
     [SerializeField]
@@ -31,29 +35,6 @@ public class Calc : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         _text.text = string.Format("sum: {0}\n input: {1}\n ope: {2}",sum,input,_ope);
-        /*
-        if (Input.GetMouseButtonDown(0)) {
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit = new RaycastHit();
-
-            if (Physics.Raycast(ray, out hit)){
-                GameObject obj = hit.collider.gameObject;
-                Debug.Log(obj.name);
-                CalcButton button = obj.GetComponent<CalcButton>();
-                if(button is NumberButton)
-                {
-                    (button as NumberButton).ButtonPressed();
-                }
-                else if(button is OperatorButton)
-                {
-                    (button as OperatorButton).ButtonPressed();
-                }
-                    
-            }
-
-        }
-        */
 	}
 
     public void StartGame()
@@ -64,8 +45,7 @@ public class Calc : MonoBehaviour {
 
     IEnumerator RepeatCoroutine()
     {
-        int repetition = 5;
-        for(int i = 0;i<repetition;i++)
+        for(int i = 0;i<_repetition;i++)
         {
             int num = RestrictedRand();
             _numberButtons[num].ButtonPressed();
