@@ -6,7 +6,7 @@ public class Calc : MonoBehaviour {
 
     int sum =0;
     int input =0;
-    Enum.Operator ope = Enum.Operator.None;
+    Enum.Operator _ope = Enum.Operator.None;
     NumberButton[] _numberButtons = new NumberButton[10];
     OperatorButton[] _operatorButtons = new OperatorButton[System.Enum.GetNames(typeof(Enum.Operator)).Length];
 
@@ -24,7 +24,7 @@ public class Calc : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        _text.text = string.Format("sum: {0}\n input: {1}\n ope: {2}",sum,input,ope);
+        _text.text = string.Format("sum: {0}\n input: {1}\n ope: {2}",sum,input,_ope);
         /*
         if (Input.GetMouseButtonDown(0)) {
 
@@ -72,7 +72,7 @@ public class Calc : MonoBehaviour {
 
     void Calculate()
     {
-        switch(ope)
+        switch(_ope)
         {
         case Enum.Operator.Add:
             Add();
@@ -96,17 +96,24 @@ public class Calc : MonoBehaviour {
     {
         sum += input;
         input = 0;
-        ope = Enum.Operator.None;
+        _ope = Enum.Operator.None;
     }
 
     public void SetNumber(int n)
     {
-        input = n;
+        if(_ope == Enum.Operator.None)
+        {
+            sum = n;
+        }
+        else
+        {
+            input = n;
+        }
     }
 
     public void SetOperator(Enum.Operator o)
     {
         Calculate();
-        ope = o;
+        _ope = o;
     }
 }
