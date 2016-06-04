@@ -28,9 +28,11 @@ public class Calc : MonoBehaviour {
     [SerializeField]
     Text _text;
 
+    [SerializeField]
+    UI _ui;
+
 	// Use this for initialization
 	void Start () {
-        DifficultySelect.difficulty = 1;
         _baseNumberList = DifficultySelect.BaseNumberList();
         _operatorList = DifficultySelect.OperatorList();
         _repetition = DifficultySelect.Repetition();
@@ -79,11 +81,12 @@ public class Calc : MonoBehaviour {
             }
             yield return new WaitForSeconds(waitTime);
         }
+        StartCoroutine(AnswerCoroutine());
     }
 
     void PressOperator()
     {
-        _operatorButtons[(int)_operatorList[Random.Range(0,_operatorList.Count)]].ButtonPressed();
+        _operatorButtons[(int)_operatorList[Random.Range(0,_operatorList.Count -1)]].ButtonPressed();
     }
 
     void Calculate()
@@ -199,5 +202,25 @@ public class Calc : MonoBehaviour {
     {
         Calculate();
         _ope = o;
+    }
+
+    IEnumerator AnswerCoroutine()
+    {
+        while(UI.hp >0)
+        {
+            UI.hp -= 0.001f;
+            yield return new WaitForSeconds(0.1f);
+            if(sum == Input())
+            {
+                _ui.Clear();
+            }
+
+
+        }
+    }
+
+    int Input()
+    {
+        return 1;
     }
 }

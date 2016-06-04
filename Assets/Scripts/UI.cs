@@ -28,13 +28,22 @@ public class UI : MonoBehaviour {
     [SerializeField]
     Image _hpBar;
 
+    [SerializeField]
+    GameObject _bombRoot;
+
+    [SerializeField]
+    DifficultySelect _difficultySelect;
+
     bool _buttooshi;
 
     public static float hp = 1f;
 
 	// Use this for initialization
-	void Start () {
-	
+    void Start () {
+        _bombRoot.SetActive(false);
+
+        _hpBar.gameObject.SetActive(false);
+        _difficultySelect.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -67,16 +76,28 @@ public class UI : MonoBehaviour {
         _body.SetActive(false);
         _button.gameObject.SetActive(true);
         _hpBar.gameObject.SetActive(true);
+        _bombRoot.SetActive(true);
     }
 
-    public void OnPressDifficulty()
+    public void OnPressDifficultySelect()
     {
         _buttooshi = false;
         DifficultySelect.difficulty = 1;
-        _buttonText.text = string.Format("難易度:{0}",DifficultySelect.difficulty);
-        _hpBar.gameObject.SetActive(true);
+        _difficultySelect.gameObject.SetActive(true);
+        _body.SetActive(false);
+
     }
         
+    public void OnPressDifficulty()
+    {
+        
+        _difficultySelect.gameObject.SetActive(false);
+        _button.gameObject.SetActive(true);
+        _buttonText.text = string.Format("難易度:{0}",DifficultySelect.difficulty);
+        _hpBar.gameObject.SetActive(true);
+        _bombRoot.SetActive(true);
+        _button.gameObject.SetActive(true);
+    }
 
     public void Clear()
     {
@@ -84,6 +105,8 @@ public class UI : MonoBehaviour {
         _hpBar.gameObject.SetActive(false);
         if(_buttooshi && DifficultySelect.difficulty != DifficultySelect.maxDifficulty)
         {
+            _image.gameObject.SetActive(true);
+            _image.sprite = _sprites[1];
             DifficultySelect.difficulty += 1;
             _calc.StartGame();
         }

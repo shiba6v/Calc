@@ -5,7 +5,13 @@ using System.Collections.Generic;
 
 public class DifficultySelect : MonoBehaviour {
 
-    public static int difficulty;
+    [SerializeField]
+    GameObject _prefab;
+
+    [SerializeField]
+    UI _ui;
+
+  public static int difficulty;
     public static readonly int maxDifficulty = 14;
 
     /** 一桁でやる難易度 */
@@ -107,6 +113,12 @@ public class DifficultySelect : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        for(int i=1; i<= DifficultySelect.maxDifficulty; i++)
+        {
+            GameObject obj = GameObject.Instantiate(_prefab);
+            obj.transform.SetParent(transform);
+            obj.GetComponent<DifficultyItem>().SetText(i,_ui );
+        }
 	
 	}
 	
