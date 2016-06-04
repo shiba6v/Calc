@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class Calc : MonoBehaviour {
 
@@ -9,6 +11,8 @@ public class Calc : MonoBehaviour {
     Enum.Operator _ope = Enum.Operator.None;
     NumberButton[] _numberButtons = new NumberButton[10];
     OperatorButton[] _operatorButtons = new OperatorButton[System.Enum.GetNames(typeof(Enum.Operator)).Length];
+    List<int> _baseNumberList;
+    List<Enum.Operator> _operatorList;
 
     [SerializeField]
     Button _startButton;
@@ -20,6 +24,8 @@ public class Calc : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        _baseNumberList = new List<int>(){ 0,1,2,3,4,5,6,7,8,9};
+        _operatorList = new List<Enum.Operator>(){ Enum.Operator.Add , Enum.Operator.Subtract , Enum.Operator.Multiply };
 	}
 	
 	// Update is called once per frame
@@ -58,17 +64,22 @@ public class Calc : MonoBehaviour {
 
     IEnumerator RepeatCoroutine()
     {
-        int repetition = Random.Range(4,9);
+        int repetition = 5;
         for(int i = 0;i<repetition;i++)
         {
-            int num = Random.Range(0,9);
+            int num = RestrictedRand();
             _numberButtons[num].ButtonPressed();
             yield return new WaitForSeconds(1f);
-            _operatorButtons[(int)Enum.Operator.Add].ButtonPressed();
+            PressButton();
             yield return new WaitForSeconds(1f);
         }
     }
         
+
+    void PressButton()
+    {
+        _operatorButtons[(int)_operatorList[Random.Range(0,_operatorList.Count)]].ButtonPressed();
+    }
 
     void Calculate()
     {
@@ -76,6 +87,15 @@ public class Calc : MonoBehaviour {
         {
         case Enum.Operator.Add:
             Add();
+            break;
+        case Enum.Operator.Subtract:
+            Subtract();
+            break;
+        case Enum.Operator.Multiply:
+            Multiply();
+            break;
+        case Enum.Operator.Divide:
+            Divide();
             break;
         case Enum.Operator.None:
             break;
@@ -92,12 +112,74 @@ public class Calc : MonoBehaviour {
         _operatorButtons[(int)ope] = operatorButton;
     }
 
+    int RestrictedRand()
+    {
+        List<int> numberList = new List<int>();
+        switch(_ope)
+        {
+        case Enum.Operator.Add:
+            numberList = _baseNumberList;
+            break;
+        case Enum.Operator.Subtract:
+            foreach (int num in _baseNumberList)
+            {
+                if(num < sum)
+                {
+                    numberList.Add(num);
+                }
+            }
+            break;
+        case Enum.Operator.Multiply:
+            numberList = _baseNumberList;
+            break;
+        case Enum.Operator.Divide:
+            foreach (int num in _baseNumberList)
+            {
+                if(sum % num == 0)
+                {
+                    numberList.Add(num);
+                }
+            }
+            break;
+        case Enum.Operator.None:
+            numberList = _baseNumberList;
+            break;
+        }
+        return numberList[Random.Range(0,numberList.Count - 1)];
+    }
+
     void Add()
     {
         sum += input;
         input = 0;
         _ope = Enum.Operator.None;
     }
+
+    void Subtract()
+    {
+        sum -= input;
+        input = 0;
+        _ope = Enum.Operator.None;
+    }
+
+    void Multiply()
+    {
+        sum *= input;
+        input = 0;
+        _ope = Enum.Operator.None;
+        
+    }
+        
+    void Divide()
+    {
+        sum /= input;
+        input = 0;
+        _ope = Enum.Operator.None;
+        
+    }
+
+
+
 
     public void SetNumber(int n)
     {
