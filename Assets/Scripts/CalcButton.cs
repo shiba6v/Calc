@@ -22,20 +22,18 @@ public abstract class CalcButton : MonoBehaviour {
 
     public virtual void ButtonPressed()
     {
+        StartCoroutine(EmitLight());
     }
 
     internal IEnumerator EmitLight()
     {
         for(int i=0;i<10;i++)
         {
-
             _light.intensity = i * 0.3f;
             yield return new WaitForSeconds(0.01f);
-            
         }
         for(int i=10;i>=0;i--)
         {
-
             _light.intensity = i * 0.3f;
             yield return new WaitForSeconds(0.01f);
 

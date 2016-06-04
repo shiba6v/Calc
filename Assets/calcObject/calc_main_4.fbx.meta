@@ -1,0 +1,170 @@
+fileFormatVersion: 2
+guid: 929f481f02fb14df7982e0dc71590cd9
+timeCreated: 1465050710
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: base
+    100002: button_
+    100004: button_+
+    100006: button_00
+    100008: button_01
+    100010: button_02
+    100012: button_03
+    100014: button_04
+    100016: button_05
+    100018: button_06
+    100020: button_07
+    100022: button_08
+    100024: button_09
+    100026: button_=
+    100028: button_devide
+    100030: button_dot
+    100032: button_minus
+    100034: button_x
+    100036: //RootNode
+    100038: Camera
+    100040: moniter
+    400000: base
+    400002: button_
+    400004: button_+
+    400006: button_00
+    400008: button_01
+    400010: button_02
+    400012: button_03
+    400014: button_04
+    400016: button_05
+    400018: button_06
+    400020: button_07
+    400022: button_08
+    400024: button_09
+    400026: button_=
+    400028: button_devide
+    400030: button_dot
+    400032: button_minus
+    400034: button_x
+    400036: //RootNode
+    400038: Camera
+    400040: moniter
+    2300000: base
+    2300002: button_
+    2300004: button_+
+    2300006: button_00
+    2300008: button_01
+    2300010: button_02
+    2300012: button_03
+    2300014: button_04
+    2300016: button_05
+    2300018: button_06
+    2300020: button_07
+    2300022: button_08
+    2300024: button_09
+    2300026: button_=
+    2300028: button_devide
+    2300030: button_dot
+    2300032: button_minus
+    2300034: button_x
+    2300036: moniter
+    3300000: base
+    3300002: button_
+    3300004: button_+
+    3300006: button_00
+    3300008: button_01
+    3300010: button_02
+    3300012: button_03
+    3300014: button_04
+    3300016: button_05
+    3300018: button_06
+    3300020: button_07
+    3300022: button_08
+    3300024: button_09
+    3300026: button_=
+    3300028: button_devide
+    3300030: button_dot
+    3300032: button_minus
+    3300034: button_x
+    3300036: moniter
+    4300000: button_=
+    4300002: moniter
+    4300004: button_
+    4300006: button_devide
+    4300008: button_x
+    4300010: button_minus
+    4300012: button_+
+    4300014: button_dot
+    4300016: button_00
+    4300018: button_07
+    4300020: button_08
+    4300022: button_09
+    4300024: button_01
+    4300026: button_02
+    4300028: button_03
+    4300030: button_06
+    4300032: button_04
+    4300034: button_05
+    4300036: base
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -7,9 +7,15 @@ public class Calc : MonoBehaviour {
     int sum =0;
     int input =0;
     Enum.Operator ope = Enum.Operator.None;
+    NumberButton[] _numberButtons = new NumberButton[10];
+    OperatorButton[] _operatorButtons = new OperatorButton[System.Enum.GetNames(typeof(Enum.Operator)).Length];
+
+    [SerializeField]
+    Button _startButton;
 
     [SerializeField]
     Text _text;
+
 
 
 	// Use this for initialization
@@ -19,6 +25,7 @@ public class Calc : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         _text.text = string.Format("sum: {0}\n input: {1}\n ope: {2}",sum,input,ope);
+        /*
         if (Input.GetMouseButtonDown(0)) {
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -38,8 +45,30 @@ public class Calc : MonoBehaviour {
                 }
                     
             }
+
         }
+        */
 	}
+
+    public void StartGame()
+    {
+        _startButton.gameObject.SetActive(false);
+        StartCoroutine(RepeatCoroutine());
+    }
+
+    IEnumerator RepeatCoroutine()
+    {
+        int repetition = Random.Range(4,9);
+        for(int i = 0;i<repetition;i++)
+        {
+            int num = Random.Range(0,9);
+            _numberButtons[num].ButtonPressed();
+            yield return new WaitForSeconds(1f);
+            _operatorButtons[(int)Enum.Operator.Add].ButtonPressed();
+            yield return new WaitForSeconds(1f);
+        }
+    }
+        
 
     void Calculate()
     {
@@ -51,6 +80,16 @@ public class Calc : MonoBehaviour {
         case Enum.Operator.None:
             break;
         }
+    }
+
+    public void SetNumberButton(int n,NumberButton numberbutton)
+    {
+        _numberButtons[n] = numberbutton;
+    }
+
+    public void SetOperatorButton(Enum.Operator ope, OperatorButton operatorButton)
+    {
+        _operatorButtons[(int)ope] = operatorButton;
     }
 
     void Add()

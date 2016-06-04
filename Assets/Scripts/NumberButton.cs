@@ -9,7 +9,7 @@ public class NumberButton : CalcButton {
 
 	// Use this for initialization
 	void Start () {
-	
+        _calc.SetNumberButton(_number,this);
 	}
 	
 	// Update is called once per frame
@@ -17,7 +17,7 @@ public class NumberButton : CalcButton {
 
 	}
 
-    public void ButtonPressed()
+    public override void ButtonPressed()
     {
         StartCoroutine(EmitLight());
         _calc.SetNumber(_number);

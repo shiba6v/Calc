@@ -9,14 +9,14 @@ public class OperatorButton : CalcButton {
 
 	// Use this for initialization
 	void Start () {
-	
+        _calc.SetOperatorButton(_ope,this);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	}
 
-    public void ButtonPressed()
+    public override void ButtonPressed()
     {
         StartCoroutine(EmitLight());
         _calc.SetOperator(_ope);
