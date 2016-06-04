@@ -31,11 +31,12 @@ public class Calc : MonoBehaviour {
     [SerializeField]
     UI _ui;
 
-	// Use this for initialization
+
+    segRay _segRay;
+
+    // Use this for initialization
 	void Start () {
-        _baseNumberList = DifficultySelect.BaseNumberList();
-        _operatorList = DifficultySelect.OperatorList();
-        _repetition = DifficultySelect.Repetition();
+        _segRay = gameObject.GetComponent<segRay>();
 	}
 
 	
@@ -47,6 +48,11 @@ public class Calc : MonoBehaviour {
 
     public void StartGame()
     {
+        sum = 0;
+        _ope = Enum.Operator.None;
+        _baseNumberList = DifficultySelect.BaseNumberList();
+        _operatorList = DifficultySelect.OperatorList();
+        _repetition = DifficultySelect.Repetition();
         _startButton.gameObject.SetActive(false);
         StartCoroutine(RepeatCoroutine());
     }
@@ -54,6 +60,7 @@ public class Calc : MonoBehaviour {
     IEnumerator RepeatCoroutine()
     {
         yield return new WaitForSeconds(1f);
+        _ui.SetImage(false);
         //スタートの表示
         yield return new WaitForSeconds(1f);
         for(int i = 0;i<_repetition;i++)
@@ -210,12 +217,23 @@ public class Calc : MonoBehaviour {
         {
             UI.hp -= 0.001f;
             yield return new WaitForSeconds(0.1f);
-            if(sum == Input())
+            if(sum == _segRay.numberInDisplay)
             {
+                ResetSevenSeg();
                 _ui.Clear();
+                break;
             }
 
 
+        }
+    }
+
+    void ResetSevenSeg()
+    {
+        int childCount = _segRay.transform.childCount;
+        for(int i = 0; i < childCount; i++)
+        {
+            _segRay.sevenSeg.transform.GetChild(i).GetComponent<sevenSeg>().unPush();
         }
     }
 

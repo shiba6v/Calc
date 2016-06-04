@@ -129,4 +129,9 @@ public class UI : MonoBehaviour {
         _image.sprite = _sprites[0];
         
     }
+
+    public void SetImage(bool b)
+    {
+        _image.gameObject.SetActive(b);
+    }
 }
