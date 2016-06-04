@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enum : CalcButton {
+public abstract class CalcButton : MonoBehaviour {
 
-    public enum Operator
-    {
-        None =0,
-        Add = 1,
-        Subtract = 2,
-
-    }
+    [SerializeField]
+    internal Calc _calc;
 
 	// Use this for initialization
 	void Start () {
@@ -20,4 +15,8 @@ public class Enum : CalcButton {
 	void Update () {
 	
 	}
+
+    public virtual void ButtonPressed()
+    {
+    }
 }

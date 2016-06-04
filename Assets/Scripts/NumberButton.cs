@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NumberButton : MonoBehaviour {
+public class NumberButton : CalcButton {
 
     [SerializeField]
     int _number;
-
-    [SerializeField]
-    Calc _calc;
 
 
 	// Use this for initialization
@@ -17,17 +14,7 @@ public class NumberButton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(0)) {
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit = new RaycastHit();
-
-            if (Physics.Raycast(ray, out hit)){
-                GameObject obj = hit.collider.gameObject;
-                Debug.Log(obj.name);
-                ButtonPressed();
-            }
-        }
 	}
 
     public void ButtonPressed()

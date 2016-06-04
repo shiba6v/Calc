@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Calc.cs" />
+     <Compile Include="Assets\Scripts\CalcButton.cs" />
      <Compile Include="Assets\Scripts\Enum.cs" />
      <Compile Include="Assets\Scripts\NumberButton.cs" />
      <Compile Include="Assets\Scripts\OperatorButton.cs" />
