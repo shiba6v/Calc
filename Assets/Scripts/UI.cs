@@ -37,6 +37,8 @@ public class UI : MonoBehaviour {
 
     public Text _hint;
 
+    bool isGameOver = false;
+
     bool _buttooshi;
 
     int kaisuu= 0;
@@ -53,9 +55,11 @@ public class UI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         _hpBar.fillAmount = hp;
-        if(hp <= 0f)
+        if(hp <= 0f && !isGameOver)
         {
+            isGameOver = true;
             GameOver();
+            _calc.Stop();
         }
         else if(hp<0.2f)
         {
@@ -164,11 +168,24 @@ public class UI : MonoBehaviour {
             _image.transform.localScale = Vector3.one*Mathf.Clamp01(Mathf.Sin(i*0.1f*Mathf.PI));
                 
         }
+        _image.transform.localScale = Vector3.one;
         _image.sprite = _sprites[0];
+        yield return new WaitForSeconds(0.3f);
+        _image.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        _image.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        _image.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        _image.gameObject.SetActive(true);
         yield return new WaitForSeconds(2f);
         _image.gameObject.SetActive(false);
-        _calc.Stop();
+        yield return new WaitForSeconds(0.5f);
         _body.SetActive(true);
+        hp = 1f;
+        kaisuu = 0;
+        isGameOver = false;
+        StopCoroutine(GameOverCoroutine());
     }
 
     void AllClear()

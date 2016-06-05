@@ -224,11 +224,11 @@ public class Calc : MonoBehaviour {
         int time = 0;
         while(UI.hp >0)
         {
-            UI.hp -= 0.001f;
+            UI.hp -= 0.007f;
             time += 1;
             yield return new WaitForSeconds(0.1f);
 
-            if(time > 300)
+            if(time > 200)
             {
                 _ui._hint.enabled = true;
                 _ui._hint.text = string.Format("答えの1の位は{0}",sum%10);
