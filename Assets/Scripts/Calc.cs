@@ -50,6 +50,7 @@ public class Calc : MonoBehaviour {
     {
         sum = 0;
         _ope = Enum.Operator.None;
+        waitTime = DifficultySelect.WaitTime();
         _baseNumberList = DifficultySelect.BaseNumberList();
         _operatorList = DifficultySelect.OperatorList();
         _repetition = DifficultySelect.Repetition();
@@ -61,7 +62,10 @@ public class Calc : MonoBehaviour {
     {
         yield return new WaitForSeconds(1f);
         _ui.SetImage(false);
-        //スタートの表示
+        yield return new WaitForSeconds(0.5f);
+        _ui.SetStartImage();
+        yield return new WaitForSeconds(0.5f);
+        _ui.SetImage(false);
         yield return new WaitForSeconds(1f);
         for(int i = 0;i<_repetition;i++)
         {
@@ -223,7 +227,6 @@ public class Calc : MonoBehaviour {
                 _ui.Clear();
                 break;
             }
-
 
         }
     }
