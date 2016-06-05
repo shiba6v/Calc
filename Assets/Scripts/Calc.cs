@@ -147,6 +147,10 @@ public class Calc : MonoBehaviour {
                     numberList.Add(num);
                 }
             }
+            if(numberList.Count == 0)
+            {
+                numberList.Add(0);
+            }
             break;
         case Enum.Operator.Multiply:
             numberList = _baseNumberList;
@@ -217,11 +221,11 @@ public class Calc : MonoBehaviour {
 
     IEnumerator AnswerCoroutine()
     {
+        int time = 0;
         while(UI.hp >0)
         {
-            int time = 0;
             UI.hp -= 0.001f;
-            time++;
+            time += 1;
             yield return new WaitForSeconds(0.1f);
 
             if(time > 300)

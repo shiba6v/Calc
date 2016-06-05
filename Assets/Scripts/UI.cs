@@ -146,8 +146,21 @@ public class UI : MonoBehaviour {
 
     public void GameOver()
     {
+        StartCoroutine(GameOverCoroutine());
+    }
+
+    IEnumerator GameOverCoroutine()
+    {
+
         _image.gameObject.SetActive(true);
         _image.sprite = _sprites[3];
+        for (int i=0;i < 100; i++)
+        {
+            yield return new WaitForSeconds(0.01f);
+            _image.transform.localScale = Vector3.one*Mathf.Clamp01(Mathf.Sin(i*0.1f*Mathf.PI));
+                
+        }
+        _image.gameObject.SetActive(false);
         _calc.Stop();
         _body.SetActive(true);
     }
