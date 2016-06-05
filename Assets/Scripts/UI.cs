@@ -117,7 +117,7 @@ public class UI : MonoBehaviour {
             AllClear();
 
         }
-        else if(kaisuu >= 4)
+        else if(kaisuu >= 3)
         {
             _hpBar.gameObject.SetActive(false);
             //4回やったら難易度選択モードクリア
@@ -126,6 +126,7 @@ public class UI : MonoBehaviour {
         }
         else
         {
+            kaisuu++;
             DifficultySelect.difficulty += 1;
         }
         hp = 1f - (1f-hp)*0.5f;
@@ -169,9 +170,26 @@ public class UI : MonoBehaviour {
     {
         _image.gameObject.SetActive(true);
         _image.sprite = _sprites[1];
-        _calc.Stop();
-        _body.SetActive(true);
+        StartCoroutine(GameClearCoroutine());
     }
+
+    IEnumerator GameClearCoroutine()
+    {
+        _image.gameObject.SetActive(true);
+        _image.sprite = _sprites[1];
+        _calc.Stop();
+        for (int i=0;i < 100; i++)
+        {
+            yield return new WaitForSeconds(0.01f);
+            _image.transform.localScale = Vector3.one*Mathf.Clamp01(Mathf.Sin(i*0.1f*Mathf.PI));
+        }
+        _image.gameObject.SetActive(false);
+
+
+        _body.SetActive(true);
+        _button.gameObject.SetActive(false);
+    }
+
 
     public void SetImage(bool b)
     {
