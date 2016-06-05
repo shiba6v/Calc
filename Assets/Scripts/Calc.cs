@@ -61,7 +61,10 @@ public class Calc : MonoBehaviour {
     {
         yield return new WaitForSeconds(1f);
         _ui.SetImage(false);
-        //スタートの表示
+        yield return new WaitForSeconds(0.5f);
+        _ui.SetStartImage();
+        yield return new WaitForSeconds(0.5f);
+        _ui.SetImage(false);
         yield return new WaitForSeconds(1f);
         for(int i = 0;i<_repetition;i++)
         {
@@ -223,7 +226,6 @@ public class Calc : MonoBehaviour {
                 _ui.Clear();
                 break;
             }
-
 
         }
     }

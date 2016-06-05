@@ -21,9 +21,21 @@ public class sevenSeg : MonoBehaviour {
 
 	}
 
+    public void Toggle()
+    {
+        if(p)
+        {
+            unPush();
+        }
+        else
+        {
+            push();
+        }
+    }
+
 	public void push() {
-		this.GetComponent<Renderer> ().material.SetColor("_SpecColor", Color.white);
-		this.GetComponent<Renderer> ().material.SetColor("_Color", Color.black);
+        this.GetComponent<Renderer> ().material.SetColor("_SpecColor", Color.white);//black にする
+        this.GetComponent<Renderer> ().material.SetColor("_Color", Color.black);
 		p = true;
 	}
 

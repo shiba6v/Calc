@@ -36,6 +36,8 @@ public class UI : MonoBehaviour {
 
     bool _buttooshi;
 
+    int kaisuu= 0;
+
     public static float hp = 1f;
 
 	// Use this for initialization
@@ -102,26 +104,39 @@ public class UI : MonoBehaviour {
     public void Clear()
     {
 
-        _hpBar.gameObject.SetActive(false);
         if(_buttooshi && DifficultySelect.difficulty != DifficultySelect.maxDifficulty)
         {
-            _image.gameObject.SetActive(true);
-            _image.sprite = _sprites[1];
             DifficultySelect.difficulty += 1;
-            _calc.StartGame();
         }
         else if (_buttooshi)
         {
+            _hpBar.gameObject.SetActive(false);
             //ぶっ通しクリア
-            _image.gameObject.SetActive(true);
-            _image.sprite = _sprites[1];
+
+        }
+        else if(kaisuu > 5)
+        {
+            _hpBar.gameObject.SetActive(false);
+            //難易度選択モードクリア
+
         }
         else
         {
-            _image.gameObject.SetActive(true);
-            _image.sprite = _sprites[1];
+            kaisuu++;
         }
+        hp = 1f - (1f-hp)*0.5f;
+        StartCoroutine(ClearCoroutine());
     }
+
+    IEnumerator ClearCoroutine()
+    {
+        _image.gameObject.SetActive(true);
+        _image.sprite = _sprites[1];
+        yield return new WaitForSeconds(1f);
+        _calc.StartGame();
+    }
+
+
 
     public void GameOver()
     {
@@ -133,5 +148,11 @@ public class UI : MonoBehaviour {
     public void SetImage(bool b)
     {
         _image.gameObject.SetActive(b);
+    }
+
+    public void SetStartImage()
+    {
+        _image.sprite = _sprites[2];
+        _image.gameObject.SetActive(true);
     }
 }
