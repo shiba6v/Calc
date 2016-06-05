@@ -34,6 +34,9 @@ public class UI : MonoBehaviour {
     [SerializeField]
     DifficultySelect _difficultySelect;
 
+
+    public Text _hint;
+
     bool _buttooshi;
 
     int kaisuu= 0;

@@ -219,8 +219,16 @@ public class Calc : MonoBehaviour {
     {
         while(UI.hp >0)
         {
+            int time = 0;
             UI.hp -= 0.001f;
+            time++;
             yield return new WaitForSeconds(0.1f);
+
+            if(time > 300)
+            {
+                _ui._hint.enabled = true;
+                _ui._hint.text = string.Format("答えの1の位は{0}",sum%10);
+            }
             if(sum == _segRay.numberInDisplay)
             {
                 ResetSevenSeg();
