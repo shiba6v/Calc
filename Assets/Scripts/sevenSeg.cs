@@ -21,6 +21,18 @@ public class sevenSeg : MonoBehaviour {
 
 	}
 
+    public void Toggle()
+    {
+        if(p)
+        {
+            unPush();
+        }
+        else
+        {
+            push();
+        }
+    }
+
 	public void push() {
 		this.GetComponent<Renderer> ().material.SetColor("_SpecColor", Color.black);
 		this.GetComponent<Renderer> ().material.SetColor("_Color", Color.black);
