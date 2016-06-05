@@ -37,13 +37,13 @@ public class materialTest01 : MonoBehaviour {
 		if (effect) { //イベント中
 
 			//tmpSpecAlphaが元の透明度に戻るまでくりかえす
-			if(tmpSpecAlpha >= specAlpha) tmpSpecAlpha -= Time.deltaTime * feedSpeed;
+			//if(tmpSpecAlpha >= specAlpha) tmpSpecAlpha -= Time.deltaTime * feedSpeed;
 
 			//tmpColorAlphaが元の透明度に戻るまでくりかえす
-			if(tmpColorAlpha >= colorAlpha) tmpColorAlpha -= Time.deltaTime * feedSpeed;
+			if(tmpColorAlpha >= /*colorAlpha*/0.76f) tmpColorAlpha -= Time.deltaTime * feedSpeed;
 
 			//tmpColorが黒になるまでくりかえす
-			if(tmpColor >= 0.0f) tmpColor -= Time.deltaTime * feedSpeed;
+			//if(tmpColor >= 0.0f) tmpColor -= Time.deltaTime * feedSpeed;
 
 			//もし、3つのtmpパラメータが元の色に戻ったら、明示的に色を元に戻し、イベントをやめる。
 			if (tmpSpecAlpha <= specAlpha && tmpColorAlpha <= colorAlpha && tmpColor <= 0.0f) {
@@ -74,13 +74,13 @@ public class materialTest01 : MonoBehaviour {
 		Color spec = this.GetComponent<Renderer> ().material.GetColor("_SpecColor");
 		Color color = this.GetComponent<Renderer> ().material.GetColor("_Color");
 
-		spec.r = 1.0f - tmpColor;
-		spec.g = 1.0f - tmpColor;
-		spec.b = 1.0f - tmpColor;
+		spec.r = tmpColor;
+		spec.g = tmpColor;
+		spec.b = tmpColor;
 
 		color.r = tmpColor;
-		color.g = tmpColor;
-		color.b = tmpColor;
+		color.g = 1.0f - tmpColor;
+		color.b = 1.0f - tmpColor;
 
 		this.GetComponent<Renderer> ().material.SetColor("_SpecColor", spec);
 		this.GetComponent<Renderer> ().material.SetColor("_Color", color);

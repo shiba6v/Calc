@@ -65,13 +65,13 @@ public class PushActivator : MonoBehaviour {
         Color spec = this.GetComponent<Renderer> ().material.GetColor("_SpecColor");
         Color color = this.GetComponent<Renderer> ().material.GetColor("_Color");
 
-        spec.r = 1.0f - tmpColor;
-        spec.g = 1.0f - tmpColor;
-        spec.b = 1.0f - tmpColor;
+        spec.r = tmpColor;
+        spec.g = tmpColor;
+        spec.b = tmpColor;
 
-        color.r = tmpColor;
-        color.g = tmpColor;
-        color.b = tmpColor;
+		color.r = 1.0f - tmpColor;
+		color.g = 1.0f - tmpColor;
+		color.b = 1.0f - tmpColor;
 
         this.GetComponent<Renderer> ().material.SetColor("_SpecColor", spec);
         this.GetComponent<Renderer> ().material.SetColor("_Color", color);
@@ -111,7 +111,7 @@ public class PushActivator : MonoBehaviour {
         Color color = this.GetComponent<Renderer> ().material.GetColor("_Color");
 
         float tmpSpecAlpha = spec.a;
-        spec = Color.black;
+        spec = Color.white;
         color = Color.white;
 
         this.GetComponent<Renderer> ().material.SetColor("_SpecColor", spec);
