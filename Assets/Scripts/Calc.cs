@@ -252,4 +252,9 @@ public class Calc : MonoBehaviour {
     {
         return 1;
     }
+    public void Stop()
+    {
+        StopCoroutine(RepeatCoroutine());
+        StopCoroutine(AnswerCoroutine());
+    }
 }

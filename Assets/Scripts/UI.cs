@@ -46,7 +46,6 @@ public class UI : MonoBehaviour {
 	// Use this for initialization
     void Start () {
         _bombRoot.SetActive(false);
-
         _hpBar.gameObject.SetActive(false);
         _difficultySelect.gameObject.SetActive(false);
 	}
@@ -115,12 +114,14 @@ public class UI : MonoBehaviour {
         {
             _hpBar.gameObject.SetActive(false);
             //ぶっ通しクリア
+            AllClear();
 
         }
         else if(kaisuu >= 4)
         {
             _hpBar.gameObject.SetActive(false);
             //4回やったら難易度選択モードクリア
+            AllClear();
 
         }
         else
@@ -147,7 +148,14 @@ public class UI : MonoBehaviour {
     {
         _image.gameObject.SetActive(true);
         _image.sprite = _sprites[0];
-        
+        _calc.Stop();
+    }
+
+    void AllClear()
+    {
+        _image.gameObject.SetActive(true);
+        _image.sprite = _sprites[1];
+        _calc.Stop();
     }
 
     public void SetImage(bool b)
