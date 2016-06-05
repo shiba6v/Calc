@@ -37,7 +37,7 @@ public class UI : MonoBehaviour {
 
     public Text _hint;
 
-    bool isGameOver = false;
+    public bool isGameOver = false;
 
     bool _buttooshi;
 
@@ -146,6 +146,7 @@ public class UI : MonoBehaviour {
         _image.sprite = _sprites[1];
         yield return new WaitForSeconds(1f);
         _image.gameObject.SetActive(false);
+        _calc.ResetSevenSeg();
         OnPressDifficulty();
         //スタートゲームをやる代わりにこのメソッドを読んでる。
     }
@@ -159,7 +160,8 @@ public class UI : MonoBehaviour {
 
     IEnumerator GameOverCoroutine()
     {
-
+        _hint.text = "";
+        _calc.ResetSevenSeg();
         _image.gameObject.SetActive(true);
         _image.sprite = _sprites[3];
         for (int i=0;i < 100; i++)
@@ -182,8 +184,8 @@ public class UI : MonoBehaviour {
         _image.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         _body.SetActive(true);
-        hp = 1f;
         kaisuu = 0;
+        hp = 1;
         isGameOver = false;
         StopCoroutine(GameOverCoroutine());
     }
@@ -198,9 +200,12 @@ public class UI : MonoBehaviour {
 
     IEnumerator GameClearCoroutine()
     {
+        _hint.text = "";
+        _calc.ResetSevenSeg();
         _image.gameObject.SetActive(true);
         _image.sprite = _sprites[1];
         _calc.Stop();
+        _image.transform.localScale = Vector3.zero;
         for (int i=0;i < 100; i++)
         {
             yield return new WaitForSeconds(0.01f);
@@ -210,6 +215,7 @@ public class UI : MonoBehaviour {
         yield return new WaitForSeconds(2f);
 
         _body.SetActive(true);
+        hp = 1f;
         _button.gameObject.SetActive(false);
     }
 

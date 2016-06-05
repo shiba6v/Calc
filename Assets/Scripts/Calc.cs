@@ -228,14 +228,13 @@ public class Calc : MonoBehaviour {
             time += 1;
             yield return new WaitForSeconds(0.1f);
 
-            if(time > 200)
+            if(time > 50 && !_ui.isGameOver)
             {
                 _ui._hint.enabled = true;
                 _ui._hint.text = string.Format("答えの1の位は{0}",sum%10);
             }
             if(sum == _segRay.numberInDisplay)
             {
-                ResetSevenSeg();
                 _ui.Clear();
                 break;
             }
@@ -243,7 +242,7 @@ public class Calc : MonoBehaviour {
         }
     }
 
-    void ResetSevenSeg()
+    public void ResetSevenSeg()
     {
         int childCount = _segRay.transform.childCount;
         for(int i = 0; i < childCount; i++)
