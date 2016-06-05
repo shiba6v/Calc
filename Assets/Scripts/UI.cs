@@ -109,6 +109,8 @@ public class UI : MonoBehaviour {
         if(_buttooshi && DifficultySelect.difficulty != DifficultySelect.maxDifficulty)
         {
             DifficultySelect.difficulty += 1;
+            hp = 1f - (1f-hp)*0.5f;
+            StartCoroutine(ClearCoroutine());
         }
         else if (_buttooshi)
         {
@@ -128,13 +130,14 @@ public class UI : MonoBehaviour {
         {
             kaisuu++;
             DifficultySelect.difficulty += 1;
+            hp = 1f - (1f-hp)*0.5f;
+            StartCoroutine(ClearCoroutine());
         }
-        hp = 1f - (1f-hp)*0.5f;
-        StartCoroutine(ClearCoroutine());
     }
 
     IEnumerator ClearCoroutine()
     {
+        _hint.text = "";
         _image.gameObject.SetActive(true);
         _image.sprite = _sprites[1];
         yield return new WaitForSeconds(1f);
@@ -161,6 +164,8 @@ public class UI : MonoBehaviour {
             _image.transform.localScale = Vector3.one*Mathf.Clamp01(Mathf.Sin(i*0.1f*Mathf.PI));
                 
         }
+        _image.sprite = _sprites[0];
+        yield return new WaitForSeconds(2f);
         _image.gameObject.SetActive(false);
         _calc.Stop();
         _body.SetActive(true);
@@ -168,6 +173,7 @@ public class UI : MonoBehaviour {
 
     void AllClear()
     {
+        kaisuu = 0;
         _image.gameObject.SetActive(true);
         _image.sprite = _sprites[1];
         StartCoroutine(GameClearCoroutine());
@@ -184,7 +190,7 @@ public class UI : MonoBehaviour {
             _image.transform.localScale = Vector3.one*Mathf.Clamp01(Mathf.Sin(i*0.1f*Mathf.PI));
         }
         _image.gameObject.SetActive(false);
-
+        yield return new WaitForSeconds(2f);
 
         _body.SetActive(true);
         _button.gameObject.SetActive(false);
