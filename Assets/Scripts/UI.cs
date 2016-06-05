@@ -147,8 +147,9 @@ public class UI : MonoBehaviour {
     public void GameOver()
     {
         _image.gameObject.SetActive(true);
-        _image.sprite = _sprites[0];
+        _image.sprite = _sprites[3];
         _calc.Stop();
+        _body.SetActive(true);
     }
 
     void AllClear()
@@ -156,6 +157,7 @@ public class UI : MonoBehaviour {
         _image.gameObject.SetActive(true);
         _image.sprite = _sprites[1];
         _calc.Stop();
+        _body.SetActive(true);
     }
 
     public void SetImage(bool b)
