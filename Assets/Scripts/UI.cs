@@ -185,7 +185,7 @@ public class UI : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
         _body.SetActive(true);
         kaisuu = 0;
-        hp = 1;
+        hp = 1f;
         isGameOver = false;
         StopCoroutine(GameOverCoroutine());
     }
