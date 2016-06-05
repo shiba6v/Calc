@@ -50,6 +50,7 @@ public class Calc : MonoBehaviour {
     {
         sum = 0;
         _ope = Enum.Operator.None;
+        waitTime = DifficultySelect.WaitTime();
         _baseNumberList = DifficultySelect.BaseNumberList();
         _operatorList = DifficultySelect.OperatorList();
         _repetition = DifficultySelect.Repetition();

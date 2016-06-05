@@ -12,32 +12,45 @@ public class DifficultySelect : MonoBehaviour {
     UI _ui;
 
   public static int difficulty;
-    public static readonly int maxDifficulty = 14;
+    public static readonly int maxDifficulty = 16;
+
+    /** 待ち時間0.8の難易度 */
+    static readonly int[] wait08Difficulty = new int[4]{
+        2,6,9,13
+    };
+    /** 待ち時間0.6の難易度 */
+    static readonly int[] wait06Difficulty = new int[4]{
+        3,7,10,14
+    };
+    /** 待ち時間0.4の難易度 */
+    static readonly int[] wait04Difficulty = new int[4]{
+        4,8,11,15
+    };
 
     /** 一桁でやる難易度 */
-    static readonly int[] oneDigitDifficulty = new int[10]{
-        1,2,5,6,9,10,11,12,13,14
+    static readonly int[] oneDigitDifficulty = new int[16]{
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
     };
     /** Addを使う難易度 */
-    static readonly int[] usingAddDifficulty = new int[14]{
-        1,2,3,4,5,6,7,8,9,10,11,12,13,14,
+    static readonly int[] usingAddDifficulty = new int[16]{
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
     };
     /** Subtractを使う難易度 */
-    static readonly int[] usingSubtractDifficulty = new int[10]{
-        5,6,7,8,9,10,11,12,13,14,
+    static readonly int[] usingSubtractDifficulty = new int[12]{
+        5,6,7,8,9,10,11,12,13,14,15,16
     };
     /** Multiplyを使う難易度 */
     static readonly int[] usingMultiplyDifficulty = new int[6]{
-        9,10,11,12,13,14,
+        9,10,11,12,15,16
     };
     /** Divisionを使う難易度 */
-    static readonly int[] usingDivideDifficulty = new int[2]{
-        13,14,
+    static readonly int[] usingDivideDifficulty = new int[4]{
+        13,14,15,16
     };
 
     /** 5回で終わる難易度 */
-    static readonly int[] fiveTimesDifficulty = new int[7]{
-        1,3,5,7,9,11,13,
+    static readonly int[] fiveTimesDifficulty = new int[16]{
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
     };
 
     static List<int> oneDigit = new List<int>()
@@ -60,6 +73,27 @@ public class DifficultySelect : MonoBehaviour {
         90,91,92,93,94,95,96,97,98,99,
         */
     };
+
+    public static float WaitTime()
+    {
+
+        if(Array.IndexOf(wait08Difficulty,difficulty) != -1)
+        {
+            return 0.8f;
+        }
+        else if(Array.IndexOf(wait06Difficulty,difficulty) != -1)
+        {
+            return 0.6f;
+        }
+        else if(Array.IndexOf(wait04Difficulty,difficulty) != -1)
+        {
+            return 0.4f;
+        }
+        else
+        {
+            return 1f;
+        }
+    }
 
     public static List<Enum.Operator> OperatorList()
     {
@@ -104,7 +138,7 @@ public class DifficultySelect : MonoBehaviour {
         }
         else
         {
-            repetition = 10;
+            repetition = 3;
         }
         return repetition;
     }
@@ -114,11 +148,11 @@ public class DifficultySelect : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        for(int i=1; i<= DifficultySelect.maxDifficulty; i++)
+        for(int i=1; i<= DifficultySelect.maxDifficulty; i= i+4)
         {
             GameObject obj = GameObject.Instantiate(_prefab);
             obj.transform.SetParent(transform);
-            obj.GetComponent<DifficultyItem>().SetText(i,_ui );
+            obj.GetComponent<DifficultyItem>().SetText((i-1)/4 +1,_ui );
         }
 	
 	}

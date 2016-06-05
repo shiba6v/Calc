@@ -114,15 +114,15 @@ public class UI : MonoBehaviour {
             //ぶっ通しクリア
 
         }
-        else if(kaisuu > 5)
+        else if(kaisuu >= 4)
         {
             _hpBar.gameObject.SetActive(false);
-            //難易度選択モードクリア
+            //4回やったら難易度選択モードクリア
 
         }
         else
         {
-            kaisuu++;
+            DifficultySelect.difficulty += 1;
         }
         hp = 1f - (1f-hp)*0.5f;
         StartCoroutine(ClearCoroutine());
@@ -133,7 +133,9 @@ public class UI : MonoBehaviour {
         _image.gameObject.SetActive(true);
         _image.sprite = _sprites[1];
         yield return new WaitForSeconds(1f);
-        _calc.StartGame();
+        _image.gameObject.SetActive(false);
+        OnPressDifficulty();
+        //スタートゲームをやる代わりにこのメソッドを読んでる。
     }
 
 
