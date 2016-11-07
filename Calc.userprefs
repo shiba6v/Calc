@@ -1,12 +1,22 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Calc.cs">
-    <Files>
-      <File FileName="Assets/Scripts/Calc.cs" Line="6" Column="25" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/shiba6v/UnityProjects/Calc/Calc/Assets/Scripts/Calc.cs" line="100" column="46" />
+      <Breakpoint file="/Users/shiba6v/UnityProjects/Calc/Calc/Assets/Scripts/OperatorButton.cs" line="22" column="1" />
+      <Breakpoint file="/Users/shiba6v/UnityProjects/Calc/Calc/Assets/Scripts/Calc.cs" line="233" column="1" />
+      <Breakpoint file="/Users/shiba6v/UnityProjects/Calc/Calc/Assets/Scripts/Calc.cs" line="226" column="14" />
+      <Breakpoint file="/Users/shiba6v/UnityProjects/Calc/Calc/Assets/Scripts/UI.cs" line="196" column="9" />
+      <Breakpoint file="/Users/shiba6v/UnityProjects/Calc/Calc/Assets/Scripts/UI.cs" line="205" column="9" />
+      <Breakpoint file="/Users/shiba6v/UnityProjects/Calc/Calc/Assets/Scripts/UI.cs" line="231" column="9" />
+      <Breakpoint file="/Users/shiba6v/UnityProjects/Calc/Calc/Assets/Scripts/UI.cs" line="145" column="9" />
+      <Breakpoint file="/Users/shiba6v/UnityProjects/Calc/Calc/Assets/Scripts/UI.cs" line="158" column="1" />
+      <Breakpoint file="/Users/shiba6v/UnityProjects/Calc/Calc/Assets/Scripts/DifficultySelect.cs" line="103" column="1" />
+      <Breakpoint file="/Users/shiba6v/UnityProjects/Calc/Calc/Assets/Scripts/DifficultySelect.cs" line="106" column="1" />
+      <Breakpoint file="/Users/shiba6v/UnityProjects/Calc/Calc/Assets/Scripts/DifficultySelect.cs" line="110" column="1" />
+      <Breakpoint file="/Users/shiba6v/UnityProjects/Calc/Calc/Assets/Scripts/DifficultySelect.cs" line="114" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

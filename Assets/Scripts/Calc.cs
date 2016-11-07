@@ -147,6 +147,10 @@ public class Calc : MonoBehaviour {
                     numberList.Add(num);
                 }
             }
+            if(numberList.Count == 0)
+            {
+                numberList.Add(0);
+            }
             break;
         case Enum.Operator.Multiply:
             numberList = _baseNumberList;
@@ -217,13 +221,20 @@ public class Calc : MonoBehaviour {
 
     IEnumerator AnswerCoroutine()
     {
+        int time = 0;
         while(UI.hp >0)
         {
-            UI.hp -= 0.001f;
+            UI.hp -= 0.007f;
+            time += 1;
             yield return new WaitForSeconds(0.1f);
+
+            if(time > 50 && !_ui.isGameOver)
+            {
+                _ui._hint.enabled = true;
+                _ui._hint.text = string.Format("答えの1の位は{0}",sum%10);
+            }
             if(sum == _segRay.numberInDisplay)
             {
-                ResetSevenSeg();
                 _ui.Clear();
                 break;
             }
@@ -231,7 +242,7 @@ public class Calc : MonoBehaviour {
         }
     }
 
-    void ResetSevenSeg()
+    public void ResetSevenSeg()
     {
         int childCount = _segRay.transform.childCount;
         for(int i = 0; i < childCount; i++)
@@ -243,5 +254,10 @@ public class Calc : MonoBehaviour {
     int Input()
     {
         return 1;
+    }
+    public void Stop()
+    {
+        StopCoroutine(RepeatCoroutine());
+        StopCoroutine(AnswerCoroutine());
     }
 }

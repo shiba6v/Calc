@@ -34,7 +34,7 @@ public class sevenSeg : MonoBehaviour {
     }
 
 	public void push() {
-        this.GetComponent<Renderer> ().material.SetColor("_SpecColor", Color.white);//black にする
+        this.GetComponent<Renderer> ().material.SetColor("_SpecColor", Color.black);//black にする
         this.GetComponent<Renderer> ().material.SetColor("_Color", Color.black);
 		p = true;
 	}
